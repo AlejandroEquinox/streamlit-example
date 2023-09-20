@@ -1,6 +1,7 @@
-import torch
-import numpy as np
 import streamlit as st
+import tensorflow as tf
+import numpy as np
+
 
 """
 # Welcome to Streamlit!
@@ -14,19 +15,19 @@ In the meantime, below is an example of what you can do with just a few lines of
 """
 
 
+
+
 img_file_buffer = st.camera_input("Take a picture")
 
 if img_file_buffer is not None:
-    # To read image file buffer as a 3D uint8 tensor with PyTorch:
+    # To read image file buffer as a 3D uint8 tensor with TensorFlow:
     bytes_data = img_file_buffer.getvalue()
-    torch_img = torch.ops.image.decode_image(
-        torch.from_numpy(np.frombuffer(bytes_data, np.uint8)), 3
-    )
+    img_tensor = tf.io.decode_image(bytes_data, channels=3)
 
-    # Check the type of torch_img:
-    # Should output: <class 'torch.Tensor'>
-    st.write(type(torch_img))
+    # Check the type of img_tensor:
+    # Should output: <class 'tensorflow.python.framework.ops.EagerTensor'>
+    st.write(type(img_tensor))
 
-    # Check the shape of torch_img:
-    # Should output shape: torch.Size([channels, height, width])
-    st.write(torch_img.shape)
+    # Check the shape of img_tensor:
+    # Should output shape: (height, width, channels)
+    st.write(img_tensor.shape)
