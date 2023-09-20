@@ -1,5 +1,3 @@
-torch
-torchaudio
-torchvision
+torch==2.0+cpu
 streamlit
 numpy
