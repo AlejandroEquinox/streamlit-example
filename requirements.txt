@@ -1,5 +1,5 @@
 altair
+torch
 pandas
 streamlit
-torch
 numpy
