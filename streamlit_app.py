@@ -1,7 +1,5 @@
-from collections import namedtuple
-import altair as alt
-import math
-import pandas as pd
+import torch
+import numpy as np
 import streamlit as st
 
 """
@@ -15,10 +13,6 @@ forums](https://discuss.streamlit.io).
 In the meantime, below is an example of what you can do with just a few lines of code:
 """
 
-
-
-import torch
-import numpy as np
 
 img_file_buffer = st.camera_input("Take a picture")
 
